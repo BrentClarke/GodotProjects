@@ -1,0 +1,21 @@
+{
+
+	"0":
+		"Welcome to your first day of training, Heist Mester. Use the [W][A][S][D] keys to move to the objective marker.",
+	
+	"1":
+		"Excellent. Next, we'll practice interacting with objects. OPenthe door ahead of you by cliocking the mouse.
+		Remember that you'll need to be close enough to touch it.",
+	"2":
+		"We've turned out the lights because you'll be working in the dark a lot. We've given you NVGs. Cycle through
+		night vision modes by pressing [SPACE]/. Head to the next objective with NVGs activated.",
+		
+	"3": 
+		"The loot is ahead in that briefcase. Pick it up by walking over it.",
+		
+	"4": 
+		"The exit is now unclocked head to it at yuour convenience."
+
+
+
+}

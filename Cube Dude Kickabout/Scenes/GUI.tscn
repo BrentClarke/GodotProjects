@@ -1,0 +1,179 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://GFX/Interface/panel_woodPaperDetail.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Scoreboardtheme.theme" type="Theme" id=2]
+[ext_resource path="res://Fonts/Fontleroy.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/P1ScoreLabel.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/P2ScoreLabel.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Popup.gd" type="Script" id=6]
+[ext_resource path="res://GFX/Interface/bannerHanging.png" type="Texture" id=7]
+[ext_resource path="res://Fonts/Kenney Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Scenes/winner.gd" type="Script" id=9]
+[ext_resource path="res://Fonts/playagainhover.tres" type="StyleBox" id=10]
+[ext_resource path="res://Fonts/playagain.tres" type="StyleBox" id=11]
+[ext_resource path="res://Fonts/quit.tres" type="StyleBox" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 51
+outline_color = Color( 0.0784314, 0.0392157, 0.0392157, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 29
+outline_color = Color( 0.0784314, 0.0392157, 0.0392157, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+bg_color = Color( 0.721569, 0.168627, 0.168627, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.85098, 0.847059, 0.47451, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.917647, 0.847059, 0.878431, 0.65098 )
+shadow_size = 23
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+outline_color = Color( 0.0784314, 0.0392157, 0.0392157, 1 )
+font_data = ExtResource( 8 )
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="ScoreboardBack" type="NinePatchRect" parent="."]
+editor/display_folded = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -175.0
+margin_right = 175.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 350, 180 )
+texture = ExtResource( 1 )
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="ScoreBoard" type="HBoxContainer" parent="ScoreboardBack"]
+margin_left = 13.0
+margin_top = 15.0
+margin_right = 357.0
+margin_bottom = 181.0
+rect_min_size = Vector2( 330, 175 )
+theme = ExtResource( 2 )
+
+[node name="Player1" type="VBoxContainer" parent="ScoreboardBack/ScoreBoard"]
+margin_right = 170.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 170, 160 )
+
+[node name="P1Label" type="Label" parent="ScoreboardBack/ScoreBoard/Player1"]
+margin_right = 170.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 160, 0 )
+text = "Player 1"
+
+[node name="P1ScoreLabel" type="RichTextLabel" parent="ScoreboardBack/ScoreBoard/Player1"]
+margin_top = 37.0
+margin_right = 170.0
+margin_bottom = 166.0
+rect_min_size = Vector2( 160, 129 )
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.117647, 0.258824, 0.74902, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]15"
+text = "15"
+scroll_active = false
+script = ExtResource( 4 )
+
+[node name="Player2" type="VBoxContainer" parent="ScoreboardBack/ScoreBoard"]
+margin_left = 174.0
+margin_right = 344.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 170, 160 )
+
+[node name="P2Label" type="Label" parent="ScoreboardBack/ScoreBoard/Player2"]
+margin_right = 170.0
+margin_bottom = 33.0
+text = "Player2"
+
+[node name="P2ScoreLabel" type="RichTextLabel" parent="ScoreboardBack/ScoreBoard/Player2"]
+margin_top = 37.0
+margin_right = 170.0
+margin_bottom = 166.0
+rect_min_size = Vector2( 160, 129 )
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.129412, 0.835294, 0.105882, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]0"
+visible_characters = 1
+text = "0"
+scroll_active = false
+script = ExtResource( 5 )
+
+[node name="Popup" type="Popup" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -600.0
+margin_right = 512.0
+script = ExtResource( 6 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Popup"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -331.5
+margin_top = -289.0
+margin_right = 331.5
+rect_min_size = Vector2( 663, 289 )
+texture = ExtResource( 7 )
+patch_margin_left = 15
+patch_margin_top = 20
+patch_margin_right = 15
+patch_margin_bottom = 20
+
+[node name="Winner" type="RichTextLabel" parent="Popup/NinePatchRect"]
+margin_left = 11.0
+margin_top = 45.0
+margin_right = 664.0
+margin_bottom = 131.0
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Player 1 Wins!!!"
+text = "Player 1 Wins!!!"
+scroll_active = false
+script = ExtResource( 9 )
+
+[node name="Retry" type="Button" parent="Popup/NinePatchRect"]
+margin_left = 40.604
+margin_top = 158.667
+margin_right = 336.604
+margin_bottom = 240.667
+rect_min_size = Vector2( 296, 82 )
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 11 )
+custom_fonts/font = SubResource( 2 )
+text = "Play Again?"
+
+[node name="Quit" type="Button" parent="Popup/NinePatchRect"]
+margin_left = 366.497
+margin_top = 156.667
+margin_right = 624.497
+margin_bottom = 238.667
+rect_min_size = Vector2( 258, 82 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 3 )
+text = "Quit"

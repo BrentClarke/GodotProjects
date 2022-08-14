@@ -1,0 +1,32 @@
+[gd_scene format=2]
+
+[node name="AnimationTreePlayer" type="AnimationTreePlayer"]
+active = true
+data = {
+"active": true,
+"connections": [ "Move", "out", 0, "IdleAnim", "Move", 0, "RunAnim", "Move", 1 ],
+"master": NodePath(""),
+"nodes": [ {
+"id": "out",
+"position": Vector2( 1147, 109 ),
+"type": "output"
+}, {
+"animation": null,
+"filter": [  ],
+"id": "IdleAnim",
+"position": Vector2( 471, 5 ),
+"type": "animation"
+}, {
+"animation": null,
+"filter": [  ],
+"id": "RunAnim",
+"position": Vector2( 366, 178 ),
+"type": "animation"
+}, {
+"blend": 0.0,
+"filter": [  ],
+"id": "Move",
+"position": Vector2( 630, 158 ),
+"type": "blend2"
+} ]
+}

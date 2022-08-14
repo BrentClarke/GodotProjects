@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Characters/GameOverScreen.gd" type="Script" id=1]
+[ext_resource path="res://GFX/Interface/PNG/metalPanel_green.png" type="Texture" id=2]
+[ext_resource path="res://GFX/Interface/Fonts/kenvector_future.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/Characters/NumberPad.theme" type="Theme" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 53
+font_data = ExtResource( 3 )
+
+[node name="GameOverScreen" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer"]
+margin_left = 312.0
+margin_top = 150.0
+margin_right = 712.0
+margin_bottom = 450.0
+rect_min_size = Vector2( 400, 300 )
+texture = ExtResource( 2 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="CenterContainer/NinePatchRect/VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 400, 70 )
+custom_fonts/font = SubResource( 1 )
+text = "GAME OVER"
+align = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/NinePatchRect/VBoxContainer"]
+margin_top = 74.0
+margin_right = 400.0
+margin_bottom = 174.0
+rect_min_size = Vector2( 400, 100 )
+
+[node name="TryAgain" type="Button" parent="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer"]
+margin_left = 150.0
+margin_top = 35.0
+margin_right = 250.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 100, 30 )
+theme = ExtResource( 4 )
+text = " Try Again?"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/NinePatchRect/VBoxContainer"]
+margin_top = 178.0
+margin_right = 400.0
+margin_bottom = 208.0
+
+[node name="Quit" type="Button" parent="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer2"]
+margin_left = 177.0
+margin_right = 222.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 45, 30 )
+theme = ExtResource( 4 )
+text = " QUIT."
+[connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer/TryAgain" to="." method="_on_TryAgain_pressed"]
+[connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer2/Quit" to="." method="_on_Quit_pressed"]

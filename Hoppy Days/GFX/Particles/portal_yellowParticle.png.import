@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/portal_yellowParticle.png-be677bbd73e1377d329ce790d7ee999c.image"
+
+[deps]
+
+source_file="res://GFX/Particles/portal_yellowParticle.png"
+dest_files=[ "res://.import/portal_yellowParticle.png-be677bbd73e1377d329ce790d7ee999c.image" ]
+
+[params]
+

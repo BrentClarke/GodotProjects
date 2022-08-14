@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SFX/Sonic Green Hill Zone.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Scenes/BackGroundMusic.gd" type="Script" id=2]
+
+[node name="BackGroundMusic" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+autoplay = true
+script = ExtResource( 2 )

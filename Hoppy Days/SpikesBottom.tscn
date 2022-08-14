@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SpikesTop.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GFX/Environment/spikes_bottom.png" type="Texture" id=2]
+
+[node name="SpikesBottom" instance=ExtResource( 1 )]
+position = Vector2( -0.237823, 0 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PoolVector2Array( 46.5018, -26.585, 32.9457, 25.7367, 25.8121, 25.8247, 14.1575, -18.9745, 3.21019, 26.1254, -3.44159, 26.2123, -15.5707, -19.4502, -27.2242, 25.7367, -34.3589, 25.7367, -46.9637, -26.8228 )
+

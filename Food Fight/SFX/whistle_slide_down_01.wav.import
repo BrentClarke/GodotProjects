@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/whistle_slide_down_01.wav-6e78af7b43bba2f4bb3f075e1936c549.sample"
+
+[deps]
+
+source_file="res://SFX/whistle_slide_down_01.wav"
+dest_files=[ "res://.import/whistle_slide_down_01.wav-6e78af7b43bba2f4bb3f075e1936c549.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

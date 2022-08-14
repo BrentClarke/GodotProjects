@@ -1,0 +1,344 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/BackGroundMusic.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/GUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Pitch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Cubedude.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Models/Cubedude/11 CubeDude.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=7]
+[ext_resource path="res://default_env.tres" type="Environment" id=8]
+[ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Models/Goal/GoalGreen.material" type="Material" id=10]
+[ext_resource path="res://Scenes/DirectionalLight.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/SpotLight.gd" type="Script" id=12]
+[ext_resource path="res://GFX/floor.material" type="Material" id=13]
+[ext_resource path="res://GFX/RearWall.material" type="Material" id=14]
+[ext_resource path="res://Models/Advert/Advert.dae" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Bear.tscn" type="PackedScene" id=16]
+
+[sub_resource type="SpatialMaterial" id=1]
+resource_name = "CubeDube"
+params_diffuse_mode = 4
+albedo_texture = ExtResource( 6 )
+metallic = 0.5
+roughness = 0.0960784
+
+[sub_resource type="PhysicsMaterial" id=2]
+bounce = 0.7
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 21, 10, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=4]
+points = PoolVector3Array( -10.5, 5, 0.5, 10.5, 5, -0.5, 10.5, 5, 0.5, -10.5, 5, -0.5, -10.5, -5, 0.5, 10.5, -5, -0.5, 10.5, -5, 0.5, -10.5, -5, -0.5, 10.5, 5, 0.5, -10.5, 5, -0.5, 10.5, 5, -0.5, -10.5, 5, 0.5, 10.5, -5, 0.5, -10.5, -5, -0.5, 10.5, -5, -0.5, -10.5, -5, 0.5, 10.5, 5, 0.5, -10.5, -5, 0.5, -10.5, 5, 0.5, 10.5, -5, 0.5, 10.5, 5, -0.5, -10.5, -5, -0.5, -10.5, 5, -0.5, 10.5, -5, -0.5 )
+
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 1, 10, 16 )
+
+[sub_resource type="ConvexPolygonShape" id=6]
+points = PoolVector3Array( -0.5, 5, 8, 0.5, 5, -8, 0.5, 5, 8, -0.5, 5, -8, -0.5, -5, 8, 0.5, -5, -8, 0.5, -5, 8, -0.5, -5, -8, 0.5, 5, 8, -0.5, 5, -8, 0.5, 5, -8, -0.5, 5, 8, 0.5, -5, 8, -0.5, -5, -8, 0.5, -5, -8, -0.5, -5, 8, 0.5, 5, 8, -0.5, -5, 8, -0.5, 5, 8, 0.5, -5, 8, 0.5, 5, -8, -0.5, -5, -8, -0.5, 5, -8, 0.5, -5, -8 )
+
+[sub_resource type="ConvexPolygonShape" id=7]
+points = PoolVector3Array( -0.5, 5, 8, 0.5, 5, -8, 0.5, 5, 8, -0.5, 5, -8, -0.5, -5, 8, 0.5, -5, -8, 0.5, -5, 8, -0.5, -5, -8, 0.5, 5, 8, -0.5, 5, -8, 0.5, 5, -8, -0.5, 5, 8, 0.5, -5, 8, -0.5, -5, -8, 0.5, -5, -8, -0.5, -5, 8, 0.5, 5, 8, -0.5, -5, 8, -0.5, 5, 8, 0.5, -5, 8, 0.5, 5, -8, -0.5, -5, -8, -0.5, 5, -8, 0.5, -5, -8 )
+
+[sub_resource type="CubeMesh" id=8]
+size = Vector3( 21, 1, 16 )
+
+[sub_resource type="BoxShape" id=9]
+
+[sub_resource type="Animation" id=10]
+resource_name = "Dimmer"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.5, 0.0 ]
+}
+
+[sub_resource type="PlaneMesh" id=11]
+material = ExtResource( 13 )
+size = Vector2( 120, 60 )
+
+[sub_resource type="PlaneMesh" id=12]
+size = Vector2( 100, 50 )
+
+[sub_resource type="CubeMesh" id=13]
+size = Vector3( 80, 4, 4 )
+
+[sub_resource type="SpatialMaterial" id=14]
+params_diffuse_mode = 1
+albedo_color = Color( 0.678431, 0.454902, 0.027451, 1 )
+
+[node name="Game" type="Spatial"]
+script = ExtResource( 1 )
+max_score = 5
+
+[node name="Audio" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="BackGroundMusic" parent="Audio" instance=ExtResource( 2 )]
+volume_db = -5.0
+
+[node name="GUI" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+
+[node name="Pitch" parent="." instance=ExtResource( 4 )]
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Cubedude2" parent="Players" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0 )
+player_id = 2
+
+[node name="Cube Dube" parent="Players/Cubedude2/Armature/Skeleton" index="0"]
+material/0 = SubResource( 1 )
+
+[node name="Cubedude" parent="Players" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0 )
+
+[node name="Ball" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+physics_material_override = SubResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0.053936, 6, 14.3348 )
+environment = ExtResource( 8 )
+
+[node name="Goals" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Goal1" parent="Goals" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -8.5, 0, 0 )
+
+[node name="Goal2" parent="Goals" instance=ExtResource( 9 )]
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 8.5, 0, 0 )
+
+[node name="Barmesh" parent="Goals/Goal2" index="0"]
+material/0 = ExtResource( 10 )
+
+[node name="Boundaries" type="Node" parent="."]
+
+[node name="BackWall" type="MeshInstance" parent="Boundaries"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -7.5 )
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Boundaries/BackWall"]
+collision_mask = 6
+
+[node name="CollisionShape" type="CollisionShape" parent="Boundaries/BackWall/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="BackWall2" type="MeshInstance" parent="Boundaries"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -6.6 )
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Boundaries/BackWall2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Boundaries/BackWall2/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="FrontWall" type="MeshInstance" parent="Boundaries"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7.5 )
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Boundaries/FrontWall"]
+collision_mask = 6
+
+[node name="CollisionShape" type="CollisionShape" parent="Boundaries/FrontWall/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="FrontWall2" type="MeshInstance" parent="Boundaries"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6.2 )
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Boundaries/FrontWall2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Boundaries/FrontWall2/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="RightWall" type="MeshInstance" parent="Boundaries"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2, 3, 0 )
+visible = false
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Boundaries/RightWall"]
+collision_mask = 6
+
+[node name="CollisionShape" type="CollisionShape" parent="Boundaries/RightWall/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="RightWall2" type="MeshInstance" parent="Boundaries"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4, 3, -0.304 )
+visible = false
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Boundaries/RightWall2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Boundaries/RightWall2/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="LeftWall" type="MeshInstance" parent="Boundaries"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2, 3, 0 )
+visible = false
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Boundaries/LeftWall"]
+collision_mask = 6
+
+[node name="CollisionShape" type="CollisionShape" parent="Boundaries/LeftWall/StaticBody"]
+shape = SubResource( 7 )
+
+[node name="LeftWall2" type="MeshInstance" parent="Boundaries"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4, 3, 0.061 )
+visible = false
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Boundaries/LeftWall2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Boundaries/LeftWall2/StaticBody"]
+shape = SubResource( 7 )
+
+[node name="Ceiling" type="MeshInstance" parent="Boundaries"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+visible = false
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Boundaries/Ceiling"]
+transform = Transform( 16, 0, 0, 0, 1, 0, 0, 0, 18, 0, 0, 0 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Boundaries/Ceiling/StaticBody"]
+shape = SubResource( 9 )
+
+[node name="Lights" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Lights" groups=[
+"Celebrants",
+]]
+transform = Transform( 0.766044, -0.271654, 0.582563, 0, 0.906308, 0.422618, -0.642788, -0.323744, 0.694272, 16.0606, 7.72999, 10.9679 )
+light_color = Color( 0.984314, 0.968627, 0.745098, 1 )
+light_energy = 1.5
+shadow_enabled = true
+shadow_color = Color( 0.196078, 0.0156863, 0.329412, 1 )
+script = ExtResource( 11 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lights/DirectionalLight"]
+anims/Dimmer = SubResource( 10 )
+
+[node name="SpotLight" type="SpotLight" parent="Lights" groups=[
+"Celebrants",
+]]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 6, 0 )
+light_energy = 3.0
+light_indirect_energy = 4.59
+shadow_enabled = true
+spot_range = 18.5
+spot_angle = 15.0
+script = ExtResource( 12 )
+
+[node name="SpotLight2" type="SpotLight" parent="Lights" groups=[
+"Celebrants",
+]]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 9, 6, -5 )
+light_energy = 3.0
+light_indirect_energy = 4.59
+shadow_enabled = true
+spot_range = 18.5
+spot_angle = 15.0
+script = ExtResource( 12 )
+
+[node name="SpotLight3" type="SpotLight" parent="Lights" groups=[
+"Celebrants",
+]]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, -9, 6, 5 )
+light_energy = 3.0
+light_indirect_energy = 4.59
+shadow_enabled = true
+spot_range = 18.5
+spot_angle = 15.0
+script = ExtResource( 12 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Decor" type="Node" parent="."]
+
+[node name="Floor" type="MeshInstance" parent="Decor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="RearWall" type="MeshInstance" parent="Decor"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, -20 )
+mesh = SubResource( 12 )
+material/0 = ExtResource( 14 )
+
+[node name="RunnerBoard" type="MeshInstance" parent="Decor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -17 )
+mesh = SubResource( 13 )
+material/0 = SubResource( 14 )
+
+[node name="Scene Root" parent="Decor" instance=ExtResource( 15 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -7.5 )
+
+[node name="Bear" parent="Decor" groups=[
+"Celebrants",
+] instance=ExtResource( 16 )]
+transform = Transform( -1.5, 0, 2.59808, 0, 3, 0, -2.59808, 0, -1.5, 15, 0, -6 )
+[connection signal="pressed" from="GUI/Popup/NinePatchRect/Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="GUI/Popup/NinePatchRect/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="body_entered" from="Goals/Goal1/GoalDetection" to="." method="_on_GoalDetection_body_entered" binds= [ 2 ]]
+[connection signal="body_entered" from="Goals/Goal2/GoalDetection" to="." method="_on_GoalDetection_body_entered" binds= [ 1 ]]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="GUI"]
+
+[editable path="Players/Cubedude2"]
+
+[editable path="Players/Cubedude"]
+
+[editable path="Goals/Goal1"]
+
+[editable path="Goals/Goal2"]

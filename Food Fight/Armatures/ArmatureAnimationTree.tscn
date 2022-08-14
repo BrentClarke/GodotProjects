@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Characters/Players/Armatures/AnimationBlendTree.tres" type="AnimationNodeBlendTree" id=1]
+
+[node name="AnimationTree" type="AnimationTree"]
+tree_root = ExtResource( 1 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+root_motion_track = NodePath("..")
+parameters/Idle_Walk/blend_amount = 0.8
+parameters/Punch_Refill/blend_amount = -0.27

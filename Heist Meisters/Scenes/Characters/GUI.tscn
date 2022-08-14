@@ -1,0 +1,145 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://GFX/Interface/PNG/glassPanel_cornerTL.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Characters/NumberPad.theme" type="Theme" id=2]
+[ext_resource path="res://GFX/Interface/PNG/barHorizontal_red_mid.png" type="Texture" id=3]
+[ext_resource path="res://GFX/Interface/PNG/barHorizontal_shadow_mid.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Characters/ProgressBar.gd" type="Script" id=5]
+[ext_resource path="res://GFX/Interface/PNG/glassPanel_cornerBR.png" type="Texture" id=6]
+[ext_resource path="res://GFX/PNG/Tiles/tile_536.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Characters/ItemList.gd" type="Script" id=8]
+[ext_resource path="res://GFX/Interface/PNG/glassPanel_cornerBL.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Characters/LootContainer.gd" type="Script" id=10]
+[ext_resource path="res://GFX/Loot/suitcase.png" type="Texture" id=11]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 16, 26 )
+modulate_color = Color( 0.666667, 0.219608, 0.219608, 1 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 16, 26 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="SuspicionDisplay" type="NinePatchRect" parent="."]
+editor/display_folded = true
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -350.0
+margin_top = -100.0
+margin_right = -20.0
+margin_bottom = -20.0
+texture = ExtResource( 1 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="CenterContainer" type="CenterContainer" parent="SuspicionDisplay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HSplitContainer" type="HSplitContainer" parent="SuspicionDisplay/CenterContainer"]
+margin_left = 57.0
+margin_top = 27.0
+margin_right = 272.0
+margin_bottom = 53.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="SuspicionDisplay/CenterContainer/HSplitContainer"]
+margin_top = 2.0
+margin_right = 103.0
+margin_bottom = 24.0
+theme = ExtResource( 2 )
+text = "Suspicion"
+
+[node name="SuspicionMeter" type="ProgressBar" parent="SuspicionDisplay/CenterContainer/HSplitContainer" groups=[
+"SuspicionMeter",
+]]
+margin_left = 115.0
+margin_right = 215.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 100, 26 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.588235, 0.14902, 0.14902, 1 )
+step = 1.0
+percent_visible = false
+script = ExtResource( 5 )
+
+[node name="DisguiseDisplay" type="NinePatchRect" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 320.0
+margin_bottom = 120.0
+texture = ExtResource( 6 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DisguiseDisplay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+
+[node name="Label" type="Label" parent="DisguiseDisplay/VBoxContainer"]
+margin_right = 290.0
+margin_bottom = 22.0
+theme = ExtResource( 2 )
+text = "Disguises"
+
+[node name="DisguiseList" type="ItemList" parent="DisguiseDisplay/VBoxContainer"]
+margin_top = 26.0
+margin_right = 290.0
+margin_bottom = 60.0
+custom_styles/bg = SubResource( 3 )
+items = [ "", ExtResource( 7 ), false ]
+auto_height = true
+max_columns = 7
+same_column_width = true
+icon_scale = 0.5
+script = ExtResource( 8 )
+
+[node name="LootContainer" type="NinePatchRect" parent="." groups=[
+"interface",
+]]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -100.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 120.0
+theme = ExtResource( 2 )
+texture = ExtResource( 9 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+script = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="LootContainer"]
+margin_left = 12.9688
+margin_top = 10.0
+margin_right = 68.9688
+margin_bottom = 32.0
+text = "Loot:"
+
+[node name="LootList" type="ItemList" parent="LootContainer"]
+margin_left = 13.0
+margin_top = 36.0
+margin_right = 75.0
+margin_bottom = 95.0
+custom_styles/bg = SubResource( 4 )
+items = [ "0", ExtResource( 11 ), false ]
+icon_scale = 0.5

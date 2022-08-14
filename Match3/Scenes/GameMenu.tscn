@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Main.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/SettingsPanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/GameMenu.gd" type="Script" id=3]
+
+[node name="GameMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" parent="." instance=ExtResource( 1 )]
+offset = Vector2( 576, 0 )
+transform = Transform2D( 1, 0, 0, 1, 576, 0 )
+
+[node name="SettingsPanel" parent="." instance=ExtResource( 2 )]
+offset = Vector2( 576, 0 )
+transform = Transform2D( 1, 0, 0, 1, 576, 0 )
+[connection signal="play_pressed" from="Main" to="." method="_on_Main_play_pressed"]
+[connection signal="settings_pressed" from="Main" to="." method="_on_Main_settings_pressed"]
+[connection signal="back_button" from="SettingsPanel" to="." method="_on_SettingsPanel_back_button"]
+[connection signal="sound_change" from="SettingsPanel" to="." method="_on_SettingsPanel_sound_change"]
